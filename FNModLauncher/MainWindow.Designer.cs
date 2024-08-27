@@ -31,8 +31,9 @@
             this.InstancesBox = new System.Windows.Forms.ListBox();
             this.LaunchButton = new System.Windows.Forms.Button();
             this.InstancesLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
+            this.NewBuildButton = new System.Windows.Forms.Button();
+            this.ModifyBuildButton = new System.Windows.Forms.Button();
+            this.OpenModsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InstancesBox
@@ -47,9 +48,9 @@
             // 
             // LaunchButton
             // 
-            this.LaunchButton.Location = new System.Drawing.Point(309, 28);
+            this.LaunchButton.Location = new System.Drawing.Point(309, 273);
             this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(97, 30);
+            this.LaunchButton.Size = new System.Drawing.Size(105, 30);
             this.LaunchButton.TabIndex = 1;
             this.LaunchButton.Text = "Launch";
             this.LaunchButton.UseVisualStyleBackColor = true;
@@ -65,39 +66,51 @@
             this.InstancesLabel.TabIndex = 3;
             this.InstancesLabel.Text = "Builds";
             // 
-            // button1
+            // NewBuildButton
             // 
-            this.button1.Location = new System.Drawing.Point(309, 64);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Add New Build";
-            this.button1.UseVisualStyleBackColor = true;
+            this.NewBuildButton.Location = new System.Drawing.Point(309, 309);
+            this.NewBuildButton.Name = "NewBuildButton";
+            this.NewBuildButton.Size = new System.Drawing.Size(105, 30);
+            this.NewBuildButton.TabIndex = 4;
+            this.NewBuildButton.Text = "Add New Build";
+            this.NewBuildButton.UseVisualStyleBackColor = true;
+            this.NewBuildButton.Click += new System.EventHandler(this.NewBuildButton_Click);
             // 
-            // SettingsButton
+            // ModifyBuildButton
             // 
-            this.SettingsButton.Location = new System.Drawing.Point(307, 401);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(97, 30);
-            this.SettingsButton.TabIndex = 5;
-            this.SettingsButton.Text = "Settings";
-            this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            this.ModifyBuildButton.Location = new System.Drawing.Point(309, 345);
+            this.ModifyBuildButton.Name = "ModifyBuildButton";
+            this.ModifyBuildButton.Size = new System.Drawing.Size(105, 30);
+            this.ModifyBuildButton.TabIndex = 5;
+            this.ModifyBuildButton.Text = "Modify Build";
+            this.ModifyBuildButton.UseVisualStyleBackColor = true;
+            this.ModifyBuildButton.Click += new System.EventHandler(this.ModifyBuildButton_Click);
+            // 
+            // OpenModsButton
+            // 
+            this.OpenModsButton.Location = new System.Drawing.Point(309, 401);
+            this.OpenModsButton.Name = "OpenModsButton";
+            this.OpenModsButton.Size = new System.Drawing.Size(105, 30);
+            this.OpenModsButton.TabIndex = 6;
+            this.OpenModsButton.Text = "Open Mods Folder";
+            this.OpenModsButton.UseVisualStyleBackColor = true;
+            this.OpenModsButton.Click += new System.EventHandler(this.OpenModsButton_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 443);
-            this.Controls.Add(this.SettingsButton);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(422, 443);
+            this.Controls.Add(this.OpenModsButton);
+            this.Controls.Add(this.ModifyBuildButton);
+            this.Controls.Add(this.NewBuildButton);
             this.Controls.Add(this.InstancesLabel);
             this.Controls.Add(this.LaunchButton);
             this.Controls.Add(this.InstancesBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "FNModLauncher";
+            this.Text = " FNModManager";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -109,8 +122,9 @@
         private System.Windows.Forms.ListBox InstancesBox;
         private System.Windows.Forms.Button LaunchButton;
         private System.Windows.Forms.Label InstancesLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button NewBuildButton;
+        private System.Windows.Forms.Button ModifyBuildButton;
+        private System.Windows.Forms.Button OpenModsButton;
     }
 }
 

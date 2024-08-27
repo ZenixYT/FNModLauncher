@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -44,12 +46,6 @@ namespace FNModLauncher
                 InstancesBox.Items.Clear();
         }
 
-        private void NewInstanceButton_Click(object sender, EventArgs e)
-        {
-            NewInstanceWindow newInstanceWindow = new NewInstanceWindow(this);
-            newInstanceWindow.Show();
-        }
-
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
@@ -66,14 +62,66 @@ namespace FNModLauncher
                 }
             }
 
-            // temp
-            Launcher launcher = new Launcher(SelectedInstance.BuildPath, "Zenn");
-            launcher.Launch();
+            Launcher launcher = new Launcher(SelectedInstance.BuildPath);
+            Thread launchThread = new Thread(() => launcher.Launch(SelectedInstance.ModsPath));
+            launchThread.Start();
         }
 
-        private void SettingsButton_Click(object sender, EventArgs e)
+        private void ModifyBuildButton_Click(object sender, EventArgs e)
         {
+            var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
+            Instance SelectedInstance = null;
+            if (Globals.jsonRoot != null)
+            {
+                foreach (Instance instance in Globals.jsonRoot.Instances)
+                {
+                    if (instance.Name == SelectedInstanceBoxItem)
+                    {
+                        SelectedInstance = instance;
+                        break;
+                    }
+                }
+            }
 
+            if (SelectedInstance != null)
+            {
+                Globals.jsonRoot.Instances.Remove(SelectedInstance);
+
+                NewInstanceWindow newInstanceWindow = new NewInstanceWindow(this, SelectedInstance);
+                newInstanceWindow.Text = "Modify Build";
+                newInstanceWindow.Show();
+            }
+        }
+
+        private void NewBuildButton_Click(object sender, EventArgs e)
+        {
+            NewInstanceWindow newInstanceWindow = new NewInstanceWindow(this);
+            newInstanceWindow.Show();
+        }
+
+        private void OpenModsButton_Click(object sender, EventArgs e)
+        {
+            var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
+            Instance SelectedInstance = null;
+            if (Globals.jsonRoot != null)
+            {
+                foreach (Instance instance in Globals.jsonRoot.Instances)
+                {
+                    if (instance.Name == SelectedInstanceBoxItem)
+                    {
+                        SelectedInstance = instance;
+                        break;
+                    }
+                }
+            }
+
+            if (SelectedInstance != null)
+            {
+                if (SelectedInstance.ModsPath != null)
+                {
+                    Process.Start(SelectedInstance.ModsPath);
+                }
+            }
         }
     }
 }

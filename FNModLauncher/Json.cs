@@ -15,6 +15,7 @@ namespace FNModLauncher
             public string Name { get; set; }
             public string BuildPath { get; set; }
             public string AdditionalArgs { get; set; }
+            public string ModsPath { get; set; }
         }
 
         public class Root
