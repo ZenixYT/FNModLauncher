@@ -101,20 +101,24 @@ namespace FNModLauncher
 
         private void OpenModsButton_Click(object sender, EventArgs e)
         {
-            var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
+            var SelectedInstanceBoxItem = InstancesBox.SelectedItem;
             Instance SelectedInstance = null;
-            if (Globals.jsonRoot != null)
+            if (SelectedInstanceBoxItem != null)
             {
-                foreach (Instance instance in Globals.jsonRoot.Instances)
+                var SelectedInstanceBoxItemStr = SelectedInstanceBoxItem.ToString();
+                if (Globals.jsonRoot != null)
                 {
-                    if (instance.Name == SelectedInstanceBoxItem)
+                    foreach (Instance instance in Globals.jsonRoot.Instances)
                     {
-                        SelectedInstance = instance;
-                        break;
+                        if (instance.Name == SelectedInstanceBoxItemStr)
+                        {
+                            SelectedInstance = instance;
+                            break;
+                        }
                     }
                 }
             }
-
+            
             if (SelectedInstance != null)
             {
                 if (SelectedInstance.ModsPath != null)
