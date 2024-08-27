@@ -71,12 +71,6 @@
   <ItemGroup>
     <Compile Include="Globals.cs" />
     <Compile Include="Json.cs" />
-    <Compile Include="SettingsWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsWindow.Designer.cs">
-      <DependentUpon>SettingsWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\Launcher.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
