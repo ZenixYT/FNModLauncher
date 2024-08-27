@@ -26,7 +26,7 @@ namespace FNModLauncher
             this._buildPath = buildPath;
         }
 
-        public void Launch(string modPath)
+        public void Launch(string modPath, string additionalArgs = "")
         {
             string[] foldersToCheckFor = { "FortniteGame", "Engine" };
             foreach (string folder in foldersToCheckFor)
@@ -39,7 +39,7 @@ namespace FNModLauncher
                 }
             }
 
-            var launchArgs = $"-epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -skippatchcheck -NOSSLPINNING -nobe -fromfl=eac -fltoken=7a848a93a74ba68876c36C1c -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiYmU5ZGE1YzJmYmVhNDQwN2IyZjQwZWJhYWQ4NTlhZDQiLCJnZW5lcmF0ZWQiOjE2Mzg3MTcyNzgsImNhbGRlcmFHdWlkIjoiMzgxMGI4NjMtMmE2NS00NDU3LTliNTgtNGRhYjNiNDgyYTg2IiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsImZhbGxiYWNrIjpmYWxzZX0.VAWQB67RTxhiWOxx7DBjnzDnXyyEnX7OljJm-j2d88G_WgwQ9wrE6lwMEHZHjBd1ISJdUO1UVUqkfLdU5nofBQ";
+            var launchArgs = $"-epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -skippatchcheck -NOSSLPINNING -nobe -fromfl=eac -fltoken=7a848a93a74ba68876c36C1c -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiYmU5ZGE1YzJmYmVhNDQwN2IyZjQwZWJhYWQ4NTlhZDQiLCJnZW5lcmF0ZWQiOjE2Mzg3MTcyNzgsImNhbGRlcmFHdWlkIjoiMzgxMGI4NjMtMmE2NS00NDU3LTliNTgtNGRhYjNiNDgyYTg2IiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsImZhbGxiYWNrIjpmYWxzZX0.VAWQB67RTxhiWOxx7DBjnzDnXyyEnX7OljJm-j2d88G_WgwQ9wrE6lwMEHZHjBd1ISJdUO1UVUqkfLdU5nofBQ {additionalArgs}";
 
             var BinariesPath = Path.Combine(this._buildPath, "FortniteGame\\Binaries\\Win64\\");
 
@@ -60,7 +60,7 @@ namespace FNModLauncher
                     StartInfo =
                     {
                         FileName = fnLauncherPath,
-                        UseShellExecute = true,
+                        UseShellExecute = false,
                         Arguments = launchArgs
                     }
                 };
@@ -79,7 +79,7 @@ namespace FNModLauncher
                     StartInfo =
                     {
                         FileName = fnEacShippingPath,
-                        UseShellExecute = true,
+                        UseShellExecute = false,
                         Arguments = launchArgs
                     }
                 };
@@ -97,7 +97,7 @@ namespace FNModLauncher
                 {
                     FileName = fnShippingPath,
                     Arguments = launchArgs,
-                    UseShellExecute = true
+                    UseShellExecute = false
                 }
             };
             _fnShippingProcess.Start();
