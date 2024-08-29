@@ -1,4 +1,4 @@
-﻿namespace FNModLauncher
+﻿namespace FNModLauncher.Builds
 {
     partial class InstallBuildsWindow
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstallBuildsWindow));
             this.buildsBox = new System.Windows.Forms.ListBox();
             this.installPathLabel = new System.Windows.Forms.Label();
             this.installPathBox = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.buildsBox.Name = "buildsBox";
             this.buildsBox.Size = new System.Drawing.Size(562, 147);
             this.buildsBox.TabIndex = 0;
-            this.buildsBox.SelectedIndexChanged += new System.EventHandler(this.buildsBox_SelectedIndexChanged);
             // 
             // installPathLabel
             // 
@@ -68,7 +68,6 @@
             this.installPathButton.TabIndex = 3;
             this.installPathButton.Text = "...";
             this.installPathButton.UseVisualStyleBackColor = true;
-            this.installPathButton.Click += new System.EventHandler(this.installPathButton_Click);
             // 
             // installButton
             // 
@@ -90,8 +89,9 @@
             this.Controls.Add(this.installPathBox);
             this.Controls.Add(this.installPathLabel);
             this.Controls.Add(this.buildsBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InstallBuildsWindow";
-            this.Text = "InstallBuildsWindow";
+            this.Text = "Install Builds";
             this.Load += new System.EventHandler(this.InstallBuildsWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

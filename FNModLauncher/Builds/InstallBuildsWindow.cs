@@ -6,14 +6,8 @@ using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
 
-namespace FNModLauncher
+namespace FNModLauncher.Builds
 {
-    public class Build
-    {
-        public string Link;
-        public string Name;
-    }
-
     public partial class InstallBuildsWindow : Form
     {
         List<Build> builds;
@@ -82,7 +76,7 @@ namespace FNModLauncher
                 {
                     selectedBuild = build;
                     break;
-                }    
+                }
             }
 
             if (selectedBuild != null)
