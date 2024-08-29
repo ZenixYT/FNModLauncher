@@ -161,7 +161,7 @@ namespace FNModLauncher
 
         private void installBuildButton_Click(object sender, EventArgs e)
         {
-            InstallBuildsWindow installBuildsWindow = new InstallBuildsWindow();
+            Builds.InstallBuildsWindow installBuildsWindow = new Builds.InstallBuildsWindow();
             installBuildsWindow.Show();
         }
     }

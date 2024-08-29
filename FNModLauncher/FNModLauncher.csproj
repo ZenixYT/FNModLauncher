@@ -13,7 +13,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +25,6 @@
     <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -103,17 +101,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builds\Builds.cs" />
     <Compile Include="Builds\DownloadProgressWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Builds\DownloadProgressWindow.Designer.cs">
       <DependentUpon>DownloadProgressWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Globals.cs" />
-    <Compile Include="Builds\InstallBuildsWindow.cs" />
+    <Compile Include="Builds\InstallBuildsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Builds\InstallBuildsWindow.Designer.cs">
       <DependentUpon>InstallBuildsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="Json.cs" />
     <Compile Include="Utilities\Launcher.cs" />
     <Compile Include="MainWindow.cs">
