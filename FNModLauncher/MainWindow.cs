@@ -1,4 +1,5 @@
 ﻿using FNModLauncher.Json;
+using FNModLauncher.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace FNModLauncher
         public MainWindow()
         {
             InitializeComponent();
+            Bitmap bmp = FNModLauncher.Properties.Resources.FML_Logo;
+            this.Icon = Icon.FromHandle(bmp.GetHicon());
         }
 
         public void UpdateInstances()
@@ -55,7 +59,7 @@ namespace FNModLauncher
                 foreach (Instance instance in Globals.jsonRoot.Instances)
                 {
                     if (instance.Name == SelectedInstanceBoxItem)
-                    {
+                    { 
                         SelectedInstance = instance;
                         break;
                     }
@@ -63,7 +67,7 @@ namespace FNModLauncher
             }
 
             Launcher launcher = new Launcher(SelectedInstance.BuildPath);
-            Thread launchThread = new Thread(() => launcher.Launch(SelectedInstance.ModsPath));
+            Thread launchThread = new Thread(() => launcher.Launch(SelectedInstance.ModsPath, SelectedInstance.AdditionalArgs));
             launchThread.Start();
         }
 
@@ -126,6 +130,39 @@ namespace FNModLauncher
                     Process.Start(SelectedInstance.ModsPath);
                 }
             }
+        }
+
+        private void deleteBuildButton_Click(object sender, EventArgs e)
+        {
+            var SelectedInstanceBoxItem = InstancesBox.SelectedItem;
+            Instance SelectedInstance = null;
+            if (SelectedInstanceBoxItem != null)
+            {
+                var SelectedInstanceBoxItemStr = SelectedInstanceBoxItem.ToString();
+                if (Globals.jsonRoot != null)
+                {
+                    foreach (Instance instance in Globals.jsonRoot.Instances)
+                    {
+                        if (instance.Name == SelectedInstanceBoxItemStr)
+                        {
+                            SelectedInstance = instance;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (SelectedInstance != null)
+            {
+                Globals.jsonRoot.Instances.Remove(SelectedInstance);
+                UpdateInstances();
+            }
+        }
+
+        private void installBuildButton_Click(object sender, EventArgs e)
+        {
+            InstallBuildsWindow installBuildsWindow = new InstallBuildsWindow();
+            installBuildsWindow.Show();
         }
     }
 }

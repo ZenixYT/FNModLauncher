@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewInstanceWindow));
             this.InstanceNameLabel = new System.Windows.Forms.Label();
             this.InstNameBox = new System.Windows.Forms.TextBox();
             this.addArgsBox = new System.Windows.Forms.TextBox();
@@ -36,9 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PathButton = new System.Windows.Forms.Button();
             this.AddInstanceButton = new System.Windows.Forms.Button();
-            this.ModsPathButton = new System.Windows.Forms.Button();
-            this.modsPathBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // InstanceNameLabel
@@ -52,7 +50,7 @@
             // 
             // InstNameBox
             // 
-            this.InstNameBox.Location = new System.Drawing.Point(56, 9);
+            this.InstNameBox.Location = new System.Drawing.Point(56, 13);
             this.InstNameBox.Name = "InstNameBox";
             this.InstNameBox.Size = new System.Drawing.Size(328, 20);
             this.InstNameBox.TabIndex = 1;
@@ -79,6 +77,7 @@
             this.fnDirBox.Name = "fnDirBox";
             this.fnDirBox.Size = new System.Drawing.Size(263, 20);
             this.fnDirBox.TabIndex = 5;
+            this.fnDirBox.TextChanged += new System.EventHandler(this.fnDirBox_TextChanged);
             // 
             // label1
             // 
@@ -101,7 +100,7 @@
             // 
             // AddInstanceButton
             // 
-            this.AddInstanceButton.Location = new System.Drawing.Point(278, 119);
+            this.AddInstanceButton.Location = new System.Drawing.Point(278, 91);
             this.AddInstanceButton.Name = "AddInstanceButton";
             this.AddInstanceButton.Size = new System.Drawing.Size(106, 23);
             this.AddInstanceButton.TabIndex = 7;
@@ -109,41 +108,12 @@
             this.AddInstanceButton.UseVisualStyleBackColor = true;
             this.AddInstanceButton.Click += new System.EventHandler(this.AddInstanceButton_Click);
             // 
-            // ModsPathButton
-            // 
-            this.ModsPathButton.Location = new System.Drawing.Point(360, 90);
-            this.ModsPathButton.Name = "ModsPathButton";
-            this.ModsPathButton.Size = new System.Drawing.Size(26, 20);
-            this.ModsPathButton.TabIndex = 10;
-            this.ModsPathButton.Text = "...";
-            this.ModsPathButton.UseVisualStyleBackColor = true;
-            this.ModsPathButton.Click += new System.EventHandler(this.ModsPathButton_Click);
-            // 
-            // modsPathBox
-            // 
-            this.modsPathBox.Location = new System.Drawing.Point(79, 91);
-            this.modsPathBox.Name = "modsPathBox";
-            this.modsPathBox.Size = new System.Drawing.Size(272, 20);
-            this.modsPathBox.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Mods Path:";
-            // 
             // NewInstanceWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(398, 154);
-            this.Controls.Add(this.ModsPathButton);
-            this.Controls.Add(this.modsPathBox);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(398, 121);
             this.Controls.Add(this.AddInstanceButton);
             this.Controls.Add(this.PathButton);
             this.Controls.Add(this.fnDirBox);
@@ -154,6 +124,7 @@
             this.Controls.Add(this.InstanceNameLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "NewInstanceWindow";
             this.Text = "Add New Build";
@@ -172,8 +143,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button PathButton;
         private System.Windows.Forms.Button AddInstanceButton;
-        private System.Windows.Forms.Button ModsPathButton;
-        private System.Windows.Forms.TextBox modsPathBox;
-        private System.Windows.Forms.Label label2;
     }
 }

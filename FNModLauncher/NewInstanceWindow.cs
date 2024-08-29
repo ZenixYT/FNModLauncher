@@ -15,6 +15,7 @@ namespace FNModLauncher
     public partial class NewInstanceWindow : Form
     {
         private MainWindow mainForm;
+        private string modsDir;
 
         public NewInstanceWindow(MainWindow mainForm, Instance baseInst = null)
         {
@@ -26,7 +27,7 @@ namespace FNModLauncher
                 InstNameBox.Text = baseInst.Name;
                 addArgsBox.Text = baseInst.AdditionalArgs;
                 fnDirBox.Text = baseInst.BuildPath;
-                modsPathBox.Text = baseInst.ModsPath;
+                modsDir = Path.Combine(fnDirBox.Text, "Mods");
             }
         }
 
@@ -50,7 +51,6 @@ namespace FNModLauncher
                 if (bValid)
                 {
                     fnDirBox.Text = diag.SelectedPath;
-                    modsPathBox.Text = Path.Combine(diag.SelectedPath, "Mods");
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace FNModLauncher
             newInst.Name = InstNameBox.Text;
             newInst.AdditionalArgs = addArgsBox.Text;
             newInst.BuildPath = fnDirBox.Text;
-            newInst.ModsPath = modsPathBox.Text;
+            newInst.ModsPath = modsDir;
 
             Globals.jsonRoot.Instances.Add(newInst);
 
@@ -77,11 +77,9 @@ namespace FNModLauncher
             this.Close();
         }
 
-        private void ModsPathButton_Click(object sender, EventArgs e)
+        private void fnDirBox_TextChanged(object sender, EventArgs e)
         {
-            FolderBrowserDialog diag = new FolderBrowserDialog();
-            if (diag.ShowDialog() == DialogResult.OK)
-                modsPathBox.Text = diag.SelectedPath;
+            modsDir = Path.Combine(fnDirBox.Text, "Mods");
         }
     }
 }

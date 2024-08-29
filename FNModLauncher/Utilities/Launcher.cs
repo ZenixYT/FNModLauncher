@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
+// stolen from Londiuh (heavily modded, thank you)
 namespace FNModLauncher
 {
     internal class Launcher
@@ -97,19 +98,13 @@ namespace FNModLauncher
                 {
                     FileName = fnShippingPath,
                     Arguments = launchArgs,
-                    UseShellExecute = false
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
                 }
             };
             _fnShippingProcess.Start();
-            
-            modLoader.ApplyDLLMods(mods, _fnShippingProcess.Id);
 
-            Thread delayedDllInjectThread = new Thread(() =>
-            {
-                Thread.Sleep(25000);
-                modLoader.ApplyDLLMods(mods, _fnShippingProcess.Id, true);
-            });
-            delayedDllInjectThread.Start();
+            modLoader.ApplyDLLMods(mods, _fnShippingProcess.Id);
 
             _fnShippingProcess.WaitForExit();
             if (_fnLauncherProcess != null) _fnLauncherProcess.Kill();
