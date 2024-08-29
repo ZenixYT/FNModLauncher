@@ -37,7 +37,10 @@ namespace FNModLauncher
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "config.json");
+            string LADPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".FNModLauncher");
+            if (!Directory.Exists(LADPath))
+                Directory.CreateDirectory(LADPath);
+            var jsonPath = Path.Combine(LADPath, "config.json");
             if (File.Exists(jsonPath))
             {
                 string json = File.ReadAllText(jsonPath);
