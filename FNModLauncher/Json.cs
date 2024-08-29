@@ -30,7 +30,10 @@ namespace FNModLauncher
             public void SaveRoot()
             {
                 string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-                string jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "config.json");
+                string LADPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".FNModLauncher");
+                if (!Directory.Exists(LADPath))
+                    Directory.CreateDirectory(LADPath);
+                string jsonPath = Path.Combine(LADPath, "config.json");
                 File.WriteAllText(jsonPath, json);
             }
         }
