@@ -7,24 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using FNModLauncher.Mods;
 
 namespace FNModLauncher.Utilities
 {
-    public enum ModType
-    {
-        DLL_MOD,
-        DELAYED_DLL_MOD,
-        PAK_MOD
-    }
-
-    public class Mod
-    {
-        public string ModFilePath { get; set; }
-        public ModType ModType { get; set; }
-    }
-
     public class ModLoader
     {
         private readonly string ModsPath;
@@ -96,8 +85,6 @@ namespace FNModLauncher.Utilities
 
                 if (ModFile.EndsWith(".dll") && !ModFile.EndsWith(".delayed.dll"))
                     newMod.ModType = ModType.DLL_MOD;
-                else if (ModFile.EndsWith(".delayed.dll"))
-                    newMod.ModType = ModType.DELAYED_DLL_MOD;
                 else if (ModFile.EndsWith(".pak") || ModFile.EndsWith(".sig") || ModFile.EndsWith(".ucas") || ModFile.EndsWith(".utoc"))
                     newMod.ModType = ModType.PAK_MOD;
 
@@ -141,24 +128,14 @@ namespace FNModLauncher.Utilities
             }
         }
 
-        public void ApplyDLLMods(List<Mod> Mods, int FortniteProcessID, bool bDelayed = false)
+        public void ApplyDLLMods(List<Mod> Mods, int FortniteProcessID)
         {
             foreach (Mod mod in Mods)
             {
                 if (File.Exists(mod.ModFilePath))
                 {
-                    if (bDelayed)
-                    {
-                        if (mod.ModType == ModType.DELAYED_DLL_MOD)
-                        {
-                            Inject(mod.ModFilePath, FortniteProcessID);
-                        }
-                    }
-                    else
-                    {
-                        if (mod.ModType == ModType.DLL_MOD)
-                            Inject(mod.ModFilePath, FortniteProcessID);
-                    }
+                    if (mod.ModType == ModType.DLL_MOD)
+                        Inject(mod.ModFilePath, FortniteProcessID);
                 }
             }
         }

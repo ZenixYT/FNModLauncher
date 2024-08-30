@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using FNModLauncher.Mods;
 
 // stolen from Londiuh (heavily modded, thank you)
 namespace FNModLauncher
