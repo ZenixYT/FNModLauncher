@@ -35,7 +35,7 @@ namespace FNModLauncher
             }
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
+        private async void MainWindow_Load(object sender, EventArgs e)
         {
             string LADPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".FNModLauncher");
             if (!Directory.Exists(LADPath))
@@ -51,6 +51,9 @@ namespace FNModLauncher
                 UpdateInstances();
             else
                 InstancesBox.Items.Clear();
+
+            UpdateChecker updateChecker = new UpdateChecker(this);
+            updateChecker.CheckForUpdate();
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)

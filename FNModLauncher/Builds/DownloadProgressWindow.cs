@@ -28,7 +28,6 @@ namespace FNModLauncher.Builds
 
             var result = buildToDownload.Link.Replace("https://public.simplyblk.xyz/", "");
             var path = Path.Combine(Destination, result);
-            MessageBox.Show(buildToDownload.Link);
             wc.DownloadFileAsync(new System.Uri(buildToDownload.Link), path);
         }
 

@@ -98,8 +98,7 @@ namespace FNModLauncher
                 {
                     FileName = fnShippingPath,
                     Arguments = launchArgs,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true
+                    UseShellExecute = false
                 }
             };
             _fnShippingProcess.Start();
