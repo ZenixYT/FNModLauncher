@@ -43,6 +43,7 @@
             this.buildsBox.Name = "buildsBox";
             this.buildsBox.Size = new System.Drawing.Size(562, 147);
             this.buildsBox.TabIndex = 0;
+            this.buildsBox.SelectedIndexChanged += new System.EventHandler(this.buildsBox_SelectedIndexChanged);
             // 
             // installPathLabel
             // 
@@ -68,6 +69,7 @@
             this.installPathButton.TabIndex = 3;
             this.installPathButton.Text = "...";
             this.installPathButton.UseVisualStyleBackColor = true;
+            this.installPathButton.Click += new System.EventHandler(this.installPathButton_Click);
             // 
             // installButton
             // 

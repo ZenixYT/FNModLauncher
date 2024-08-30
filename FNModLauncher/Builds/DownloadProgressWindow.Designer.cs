@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DownloadProgressWindow));
             this.downloadBar = new System.Windows.Forms.ProgressBar();
             this.downloadLabel = new System.Windows.Forms.Label();
-            this.warningLabel = new System.Windows.Forms.Label();
+            this.bytesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // downloadBar
@@ -50,21 +50,21 @@
             this.downloadLabel.TabIndex = 1;
             this.downloadLabel.Text = "999%";
             // 
-            // warningLabel
+            // bytesLabel
             // 
-            this.warningLabel.AutoSize = true;
-            this.warningLabel.Location = new System.Drawing.Point(9, 35);
-            this.warningLabel.Name = "warningLabel";
-            this.warningLabel.Size = new System.Drawing.Size(420, 13);
-            this.warningLabel.TabIndex = 2;
-            this.warningLabel.Text = "KEEP THIS WINDOW OPEN IF YOU DONT WANT YOUR DOWNLOAD TO CANCEL";
+            this.bytesLabel.AutoSize = true;
+            this.bytesLabel.Location = new System.Drawing.Point(12, 35);
+            this.bytesLabel.Name = "bytesLabel";
+            this.bytesLabel.Size = new System.Drawing.Size(42, 13);
+            this.bytesLabel.TabIndex = 2;
+            this.bytesLabel.Text = "0b / 0b";
             // 
             // DownloadProgressWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 58);
-            this.Controls.Add(this.warningLabel);
+            this.Controls.Add(this.bytesLabel);
             this.Controls.Add(this.downloadLabel);
             this.Controls.Add(this.downloadBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -80,6 +80,6 @@
 
         private System.Windows.Forms.ProgressBar downloadBar;
         private System.Windows.Forms.Label downloadLabel;
-        private System.Windows.Forms.Label warningLabel;
+        private System.Windows.Forms.Label bytesLabel;
     }
 }

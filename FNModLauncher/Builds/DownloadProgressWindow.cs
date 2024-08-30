@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,19 +23,24 @@ namespace FNModLauncher.Builds
 
             this.Text = $"Downloading {buildToDownload.Name}...";
 
-            wc = new WebClient();
+            Thread thread = new Thread(() =>
+            {
+                WebClient client = new WebClient();
+                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
 
-            wc.DownloadProgressChanged += DownloadProgressChanged;
-
-            var result = buildToDownload.Link.Replace("https://public.simplyblk.xyz/", "");
-            var path = Path.Combine(Destination, result);
-            wc.DownloadFileAsync(new System.Uri(buildToDownload.Link), path);
+                var result = buildToDownload.Link.Replace("https://public.simplyblk.xyz/", "");
+                var path = Path.Combine(Destination, result);
+                client.DownloadFileAsync(new System.Uri(buildToDownload.Link), path);
+            });
+            thread.Start();
         }
 
         void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             downloadBar.Value = e.ProgressPercentage;
             downloadLabel.Text = $"{e.ProgressPercentage}%";
+
+            bytesLabel.Text = $"{Math.Round(e.BytesReceived / 1073741824.0, 2)} GB / {Math.Round(e.TotalBytesToReceive / 1073741824.0, 2)} GB";
         }
 
         private void DownloadProgressWindow_Load(object sender, EventArgs e)

@@ -159,6 +159,7 @@ namespace FNModLauncher
             if (SelectedInstance != null)
             {
                 Globals.jsonRoot.Instances.Remove(SelectedInstance);
+                Globals.jsonRoot.SaveRoot();
                 UpdateInstances();
             }
         }
