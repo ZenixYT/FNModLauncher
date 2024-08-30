@@ -16,6 +16,7 @@ namespace FNModLauncher
     {
         private MainWindow mainForm;
         private string modsDir;
+        private readonly Instance instance = null;
 
         public NewInstanceWindow(MainWindow mainForm, Instance baseInst = null)
         {
@@ -28,6 +29,7 @@ namespace FNModLauncher
                 addArgsBox.Text = baseInst.AdditionalArgs;
                 fnDirBox.Text = baseInst.BuildPath;
                 modsDir = Path.Combine(fnDirBox.Text, "Mods");
+                instance = baseInst;
             }
         }
 
@@ -59,6 +61,9 @@ namespace FNModLauncher
         {
             if (Globals.jsonRoot == null)
                 Globals.jsonRoot = new Root();
+
+            if (instance != null && Globals.jsonRoot.Instances.Contains(instance))
+                Globals.jsonRoot.Instances.Remove(instance);
 
             Instance newInst = new Instance();
             newInst.Name = InstNameBox.Text;

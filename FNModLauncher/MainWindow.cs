@@ -95,8 +95,6 @@ namespace FNModLauncher
 
             if (SelectedInstance != null)
             {
-                Globals.jsonRoot.Instances.Remove(SelectedInstance);
-
                 NewInstanceWindow newInstanceWindow = new NewInstanceWindow(this, SelectedInstance);
                 newInstanceWindow.Text = "Modify Build";
                 newInstanceWindow.Show();
