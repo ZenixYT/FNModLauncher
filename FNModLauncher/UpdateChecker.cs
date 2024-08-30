@@ -20,7 +20,6 @@ namespace FNModLauncher
 {
     public class UpdateChecker
     {
-        private string VersionTag = "1.0.2";
         private GitHubClient client;
         private MainWindow mainWindow;
 
@@ -50,7 +49,7 @@ namespace FNModLauncher
 
             if (release != null)
             {
-                if (release.Name != VersionTag)
+                if (release.Name != Globals.VersionTag)
                 {
                     DialogResult res = MessageBox.Show($"There is a new update available! ({release.Name})\n\nDo you want to download it now?", "FNModLauncher", MessageBoxButtons.YesNo);
 

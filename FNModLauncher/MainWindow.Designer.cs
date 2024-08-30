@@ -95,7 +95,7 @@
             this.OpenModsButton.Name = "OpenModsButton";
             this.OpenModsButton.Size = new System.Drawing.Size(105, 30);
             this.OpenModsButton.TabIndex = 6;
-            this.OpenModsButton.Text = "Open Mods Folder";
+            this.OpenModsButton.Text = "Manage Mods";
             this.OpenModsButton.UseVisualStyleBackColor = true;
             this.OpenModsButton.Click += new System.EventHandler(this.OpenModsButton_Click);
             // 

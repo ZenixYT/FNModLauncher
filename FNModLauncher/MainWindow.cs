@@ -24,6 +24,8 @@ namespace FNModLauncher
             InitializeComponent();
             Bitmap bmp = FNModLauncher.Properties.Resources.FML_Logo;
             this.Icon = Icon.FromHandle(bmp.GetHicon());
+
+            this.Text = $"FNModLauncher v{Globals.VersionTag}";
         }
 
         public void UpdateInstances()
