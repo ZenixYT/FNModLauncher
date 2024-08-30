@@ -1,5 +1,5 @@
 # FNModLauncher
- A Fortnite launcher designed to support dynamic mod loading systems
+ A Fortnite launcher designed for older versions to support dynamic mod loading systems
 
 ## Planned Changes
 - Mod management systems, including enabling and disabling mods, adding mods via the launcher, etc.
