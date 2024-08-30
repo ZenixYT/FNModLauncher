@@ -20,7 +20,7 @@ namespace FNModLauncher
 {
     public class UpdateChecker
     {
-        private string VersionTag = "1.0.0";
+        private string VersionTag = "1.0.1";
         private GitHubClient client;
         private MainWindow mainWindow;
 
