@@ -1,4 +1,4 @@
-﻿namespace FNModLauncher
+﻿namespace FNModLauncher.Mods
 {
     partial class ManageModsWindow
     {
@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageModsWindow));
             this.modListBox = new System.Windows.Forms.CheckedListBox();
             this.deleteModButton = new System.Windows.Forms.Button();
+            this.openFolderButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // modListBox
@@ -51,11 +52,22 @@
             this.deleteModButton.UseVisualStyleBackColor = true;
             this.deleteModButton.Click += new System.EventHandler(this.deleteModButton_Click);
             // 
+            // openFolderButton
+            // 
+            this.openFolderButton.Location = new System.Drawing.Point(224, 370);
+            this.openFolderButton.Name = "openFolderButton";
+            this.openFolderButton.Size = new System.Drawing.Size(105, 30);
+            this.openFolderButton.TabIndex = 2;
+            this.openFolderButton.Text = "Open Mods Folder";
+            this.openFolderButton.UseVisualStyleBackColor = true;
+            this.openFolderButton.Click += new System.EventHandler(this.openFolderButton_Click);
+            // 
             // ManageModsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 451);
+            this.Controls.Add(this.openFolderButton);
             this.Controls.Add(this.deleteModButton);
             this.Controls.Add(this.modListBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.CheckedListBox modListBox;
         private System.Windows.Forms.Button deleteModButton;
+        private System.Windows.Forms.Button openFolderButton;
     }
 }

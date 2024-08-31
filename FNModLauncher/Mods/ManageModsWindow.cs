@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FNModLauncher
+namespace FNModLauncher.Mods
 {
     public partial class ManageModsWindow : Form
     {
@@ -95,6 +96,11 @@ namespace FNModLauncher
             {
                 modManager.DisableMod(Inst);
             }
+        }
+
+        private void openFolderButton_Click(object sender, EventArgs e)
+        {
+            Process.Start($"explorer.exe {modManager.GetModsPath()}");
         }
     }
 }

@@ -105,12 +105,12 @@
     <Compile Include="Builds\InstallBuildsWindow.Designer.cs">
       <DependentUpon>InstallBuildsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Globals.cs" />
-    <Compile Include="Json.cs" />
-    <Compile Include="ManageModsWindow.cs">
+    <Compile Include="Resources\Globals.cs" />
+    <Compile Include="Utilities\Json.cs" />
+    <Compile Include="Mods\ManageModsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageModsWindow.Designer.cs">
+    <Compile Include="Mods\ManageModsWindow.Designer.cs">
       <DependentUpon>ManageModsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Mods\Mod.cs" />
@@ -123,10 +123,10 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewInstanceWindow.cs">
+    <Compile Include="Builds\NewInstanceWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewInstanceWindow.Designer.cs">
+    <Compile Include="Builds\NewInstanceWindow.Designer.cs">
       <DependentUpon>NewInstanceWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -142,10 +142,10 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageModsWindow.resx">
+    <EmbeddedResource Include="Mods\ManageModsWindow.resx">
       <DependentUpon>ManageModsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewInstanceWindow.resx">
+    <EmbeddedResource Include="Builds\NewInstanceWindow.resx">
       <DependentUpon>NewInstanceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,4 +1,4 @@
-﻿using FNModLauncher.Json;
+﻿using FNModLauncher.Utilities.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

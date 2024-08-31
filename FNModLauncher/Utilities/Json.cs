@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FNModLauncher
+namespace FNModLauncher.Utilities
 {
     namespace Json
     {

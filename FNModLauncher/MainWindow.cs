@@ -1,4 +1,4 @@
-﻿using FNModLauncher.Json;
+﻿using FNModLauncher.Utilities.Json;
 using FNModLauncher.Utilities;
 using Newtonsoft.Json;
 using System;
@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FNModLauncher.Mods;
+using FNModLauncher.Builds;
 
 namespace FNModLauncher
 {

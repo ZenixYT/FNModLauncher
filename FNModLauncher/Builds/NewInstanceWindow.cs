@@ -1,4 +1,4 @@
-﻿using FNModLauncher.Json;
+﻿using FNModLauncher.Utilities.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FNModLauncher.Utilities;
+using FNModLauncher.Mods;
 
-namespace FNModLauncher
+namespace FNModLauncher.Builds
 {
     public partial class NewInstanceWindow : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace FNModLauncher
+﻿namespace FNModLauncher.Builds
 {
     partial class NewInstanceWindow
     {
