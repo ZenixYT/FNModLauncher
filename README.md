@@ -2,8 +2,7 @@
  A Fortnite launcher designed for older versions to support dynamic mod loading systems
 
 ## Planned Changes
-- Mod management systems, including enabling and disabling mods, adding mods via the launcher, etc.
-- Possible(?) latest support (without mods)
+- ~~Mod management systems, including enabling and disabling mods, adding mods via the launcher, etc.~~
 
 ## Credits
 - Londiuh - Launching code
