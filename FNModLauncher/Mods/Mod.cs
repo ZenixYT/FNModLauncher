@@ -22,7 +22,10 @@ namespace FNModLauncher.Mods
 
         public string GetName()
         {
-            return Path.GetFileNameWithoutExtension(ModFilePath);
+            return Path.GetFileNameWithoutExtension(ModFilePath)
+                .Replace(".disabled", "")
+                .Replace(".dll", "")
+                .Replace(".pak", ""); // this is so hacky but it may fix it
         }
     }
 }

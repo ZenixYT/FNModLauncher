@@ -10,9 +10,9 @@ using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using FNModLauncher.Mods;
+using FNModLauncher.Utilities;
 
-namespace FNModLauncher.Utilities
+namespace FNModLauncher.Mods
 {
     public class ModLoader
     {

@@ -10,6 +10,6 @@ namespace FNModLauncher
     public class Globals
     {
         public static Root jsonRoot = null;
-        public static string VersionTag = "1.0.2";
+        public static string VersionTag = "1.1.0";
     }
 }

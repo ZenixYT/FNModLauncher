@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageModsWindow));
             this.modListBox = new System.Windows.Forms.CheckedListBox();
             this.deleteModButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -42,9 +43,9 @@
             // 
             // deleteModButton
             // 
-            this.deleteModButton.Location = new System.Drawing.Point(224, 413);
+            this.deleteModButton.Location = new System.Drawing.Point(224, 406);
             this.deleteModButton.Name = "deleteModButton";
-            this.deleteModButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteModButton.Size = new System.Drawing.Size(105, 30);
             this.deleteModButton.TabIndex = 1;
             this.deleteModButton.Text = "Delete Mod";
             this.deleteModButton.UseVisualStyleBackColor = true;
@@ -54,11 +55,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 451);
+            this.ClientSize = new System.Drawing.Size(337, 451);
             this.Controls.Add(this.deleteModButton);
             this.Controls.Add(this.modListBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageModsWindow";
-            this.Text = "ManageModsWindow";
+            this.Text = "Manage Mods";
             this.Load += new System.EventHandler(this.ManageModsWindow_Load);
             this.ResumeLayout(false);
 

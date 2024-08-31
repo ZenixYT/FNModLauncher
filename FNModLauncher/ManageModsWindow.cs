@@ -23,15 +23,21 @@ namespace FNModLauncher
             InitializeComponent();
 
             modManager = new ModManager(modPath);
+            modManager.FetchMods();
 
             this.AllowDrop = true;
             this.DragEnter += ManageModsWindow_DragEnter;
             this.DragDrop += ManageModsWindow_DragDrop;
+
+            this.modListBox.ItemCheck += new ItemCheckEventHandler(this.modListBox_ItemCheck);
         }
 
         public void UpdateModsBox()
         {
-            foreach (Mod mod in modManager.GetMods())
+            var mods = modManager.GetMods().ToList();
+
+            modListBox.Items.Clear();
+            foreach (Mod mod in mods)
             {
                 int i = modListBox.Items.Add(mod.GetName());
                 modListBox.SetItemChecked(i, mod.ModType != ModType.DISABLED_MOD ? true : false);
@@ -56,9 +62,6 @@ namespace FNModLauncher
         }
         private void ManageModsWindow_Load(object sender, EventArgs e)
         {
-            modListBox.Items.Clear();
-
-            modManager.FetchMods();
             UpdateModsBox();
         }
 
@@ -73,6 +76,21 @@ namespace FNModLauncher
                     if (ModName == mod.GetName())
                         modListBox.Items.Remove(SelectedItem);
                 }
+            }
+        }
+
+        private void modListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            var State = e.NewValue;
+            var Inst = (string)modListBox.Items[e.Index];
+
+            if (State == CheckState.Checked)
+            {
+                modManager.EnableMod(Inst);
+            }
+            else if (State == CheckState.Unchecked)
+            {
+                modManager.DisableMod(Inst);
             }
         }
     }

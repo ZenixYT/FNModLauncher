@@ -133,7 +133,8 @@ namespace FNModLauncher
             {
                 if (SelectedInstance.ModsPath != null)
                 {
-                    Process.Start(SelectedInstance.ModsPath);
+                    ManageModsWindow manageModsWindow = new ManageModsWindow(SelectedInstance.ModsPath);
+                    manageModsWindow.Show();
                 }
             }
         }

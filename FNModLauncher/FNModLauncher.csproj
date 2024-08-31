@@ -131,7 +131,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ModLoader.cs" />
+    <Compile Include="Mods\ModLoader.cs" />
     <Compile Include="Utilities\Win32.cs" />
     <EmbeddedResource Include="Builds\DownloadProgressWindow.resx">
       <DependentUpon>DownloadProgressWindow.cs</DependentUpon>

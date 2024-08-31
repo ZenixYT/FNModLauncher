@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FNModLauncher.Mods
 {
@@ -19,7 +20,7 @@ namespace FNModLauncher.Mods
             this.modsPath = modsPath;
         }
 
-        public void FetchMods()
+        public List<Mod> FetchMods()
         {
             List<Mod> mods = new List<Mod>();
             foreach (string ModFile in Directory.GetFiles(modsPath))
@@ -38,6 +39,7 @@ namespace FNModLauncher.Mods
             }
 
             this.mods = mods;
+            return mods;
         }
 
         public Mod AddNewMod(string ModFile)
@@ -59,6 +61,77 @@ namespace FNModLauncher.Mods
 
                 mods.Add(mod);
                 return mod;
+            }
+
+            return null;
+        }
+
+        public void DisableMod(string ModName)
+        {
+            Mod mod = null;
+            foreach (Mod modI in mods)
+            {
+                if (ModName == modI.GetName())
+                {
+                    mod = modI;
+                    break;
+                }    
+            }
+
+            if (mod != null)
+            {
+                mods.Remove(mod);
+
+                var newModFileName = mod.ModFilePath + ".disabled";
+                if (!File.Exists(newModFileName))
+                    File.Move(mod.ModFilePath, newModFileName);
+                mod.ModFilePath = newModFileName;
+
+                mod.ModType = ModType.DISABLED_MOD;
+
+                mods.Add(mod);
+            }
+        }
+
+        public void EnableMod(string ModName)
+        {
+            Mod mod = null;
+            foreach (Mod modI in mods)
+            {
+                if (ModName == modI.GetName())
+                {
+                    mod = modI;
+                    break;
+                }
+            }
+
+            if (mod != null)
+            {
+                mods.Remove(mod);
+
+                var newModFileName = mod.ModFilePath.Replace(".disabled", "");
+                if (!File.Exists(newModFileName))
+                    File.Move(mod.ModFilePath, newModFileName);
+                mod.ModFilePath = newModFileName;
+
+                var ModFile = newModFileName;
+                if (ModFile.EndsWith(".dll"))
+                    mod.ModType = ModType.DLL_MOD;
+                else if (ModFile.EndsWith(".pak") || ModFile.EndsWith(".sig") || ModFile.EndsWith(".ucas") || ModFile.EndsWith(".utoc"))
+                    mod.ModType = ModType.PAK_MOD;
+                else if (ModFile.EndsWith(".disabled"))
+                    mod.ModType = ModType.DISABLED_MOD;
+
+                mods.Add(mod);
+            }
+        }
+
+        public Mod GetMod(string ModName)
+        {
+            foreach (Mod modI in mods)
+            {
+                if (modI.GetName() == ModName)
+                    return modI;
             }
 
             return null;
