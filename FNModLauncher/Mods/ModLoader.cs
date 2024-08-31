@@ -97,6 +97,13 @@ namespace FNModLauncher.Mods
         public void ApplyPakMods(List<Mod> Mods)
         {
             string PakPath = Path.Combine(FortniteBuildPath, "FortniteGame\\Content\\Paks");
+
+            var sigFiles = Directory.GetFiles(PakPath, "*.sig", SearchOption.AllDirectories);
+            var smallestSig = sigFiles
+                .Select(file => new FileInfo(file))
+                .OrderBy(fileInfo => fileInfo.Length)
+                .First().FullName;
+
             foreach (Mod mod in Mods)
             {
                 if (File.Exists(mod.ModFilePath))
@@ -105,7 +112,12 @@ namespace FNModLauncher.Mods
                     {
                         string NewModPath = Path.Combine(PakPath, Path.GetFileName(mod.ModFilePath));
                         if (!File.Exists(NewModPath))
+                        {
                             File.Copy(mod.ModFilePath, NewModPath);
+
+                            var SigName = Path.GetFileNameWithoutExtension(mod.ModFilePath) + ".sig";
+                            File.Copy(smallestSig, Path.Combine(PakPath, SigName));
+                        }
                     }
                 }
             }
@@ -114,6 +126,7 @@ namespace FNModLauncher.Mods
         public void RemovePakMods(List<Mod> Mods)
         {
             string PakPath = Path.Combine(FortniteBuildPath, "FortniteGame\\Content\\Paks");
+
             foreach (Mod mod in Mods)
             {
                 if (File.Exists(mod.ModFilePath))
@@ -122,7 +135,13 @@ namespace FNModLauncher.Mods
                     {
                         string NewModPath = Path.Combine(PakPath, Path.GetFileName(mod.ModFilePath));
                         if (File.Exists(NewModPath))
+                        {
                             File.Delete(NewModPath);
+
+                            var sigPath = Path.Combine(PakPath, Path.GetFileNameWithoutExtension(mod.ModFilePath) + ".sig");
+                            if (File.Exists(sigPath))
+                                File.Delete(sigPath);
+                        }
                     }
                 }
             }

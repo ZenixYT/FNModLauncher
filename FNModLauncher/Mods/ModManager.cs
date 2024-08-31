@@ -45,7 +45,7 @@ namespace FNModLauncher.Mods
         public Mod AddNewMod(string ModFile)
         {
             var newModPath = Path.Combine(modsPath, Path.GetFileName(ModFile));
-            if (!File.Exists(ModFile))
+            if (!File.Exists(newModPath))
             {
                 File.Copy(ModFile, newModPath);
 
@@ -75,7 +75,7 @@ namespace FNModLauncher.Mods
                 {
                     mod = modI;
                     break;
-                }    
+                }
             }
 
             if (mod != null)

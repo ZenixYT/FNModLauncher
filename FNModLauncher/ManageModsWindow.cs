@@ -74,7 +74,10 @@ namespace FNModLauncher
                 foreach (Mod mod in modManager.GetMods())
                 {
                     if (ModName == mod.GetName())
+                    {
                         modListBox.Items.Remove(SelectedItem);
+                        File.Delete(mod.ModFilePath);
+                    }
                 }
             }
         }

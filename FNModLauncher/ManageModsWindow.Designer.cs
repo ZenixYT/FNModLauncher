@@ -58,7 +58,9 @@
             this.ClientSize = new System.Drawing.Size(337, 451);
             this.Controls.Add(this.deleteModButton);
             this.Controls.Add(this.modListBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ManageModsWindow";
             this.Text = "Manage Mods";
             this.Load += new System.EventHandler(this.ManageModsWindow_Load);

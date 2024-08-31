@@ -55,7 +55,7 @@ namespace FNModLauncher
                 InstancesBox.Items.Clear();
 
             UpdateChecker updateChecker = new UpdateChecker(this);
-            updateChecker.CheckForUpdate();
+            updateChecker.CheckForUpdate(); 
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)

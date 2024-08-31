@@ -115,7 +115,7 @@
     </Compile>
     <Compile Include="Mods\Mod.cs" />
     <Compile Include="Mods\ModManager.cs" />
-    <Compile Include="UpdateChecker.cs" />
+    <Compile Include="Utilities\UpdateChecker.cs" />
     <Compile Include="Utilities\Launcher.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
