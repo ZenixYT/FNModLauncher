@@ -18,6 +18,9 @@ namespace FNModLauncher.Mods
         {
             mods = new List<Mod>();
             this.modsPath = modsPath;
+
+            if (!Directory.Exists(modsPath))
+                Directory.CreateDirectory(modsPath);
         }
 
         public List<Mod> FetchMods()
