@@ -1,4 +1,5 @@
 ﻿using FNModLauncher.Builds;
+using FNModLauncher.Utilities;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,14 @@ namespace FNModLauncher.Builds
 {
     public partial class InstallBuildsWindow : Form
     {
-        List<Build> builds;
+        List<Downloadable> builds;
         string SelectedBuildName = string.Empty;
 
         public InstallBuildsWindow()
         {
             InitializeComponent();
 
-            builds = new List<Build>();
+            builds = new List<Downloadable>();
         }
 
         private async void InstallBuildsWindow_Load(object sender, EventArgs e)
@@ -39,17 +40,18 @@ namespace FNModLauncher.Builds
 
                     if (href.StartsWith("https://public.simplyblk.xyz/"))
                     {
-                        Build newBuild = new Build();
+                        Downloadable newBuild = new Downloadable();
                         newBuild.Link = href;
                         string Version = href.Replace("https://public.simplyblk.xyz/", "").Replace(".zip", "").Replace(".rar", "");
                         newBuild.Name = $"Fortnite v{Version}";
+                        newBuild.IsFortniteBuild = true;
 
                         builds.Add(newBuild);
                     }
                 }
             }
 
-            foreach (Build build in builds)
+            foreach (Downloadable build in builds)
                 buildsBox.Items.Add(build.Name);
         }
 
@@ -69,7 +71,7 @@ namespace FNModLauncher.Builds
 
         private void installButton_Click(object sender, EventArgs e)
         {
-            Build selectedBuild = null;
+            Downloadable selectedBuild = null;
             foreach (var build in builds)
             {
                 if (build.Name == SelectedBuildName)

@@ -1,4 +1,4 @@
-﻿namespace FNModLauncher.Builds
+﻿namespace FNModLauncher.Utilities
 {
     partial class DownloadProgressWindow
     {

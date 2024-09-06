@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FNModLauncher.Builds
+namespace FNModLauncher.Utilities
 {
-    public class Build
+    public class Downloadable
     {
         public string Link;
         public string Name;
+        public bool IsFortniteBuild;
     }
 }

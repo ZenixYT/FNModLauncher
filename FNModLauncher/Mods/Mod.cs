@@ -28,4 +28,11 @@ namespace FNModLauncher.Mods
                 .Replace(".pak", ""); // this is so hacky but it may fix it
         }
     }
+
+    public class ListedMod
+    {
+        public string Name { get; set; }
+        public string Desc { get; set; }
+        public string Link { get; set; }
+    }
 }

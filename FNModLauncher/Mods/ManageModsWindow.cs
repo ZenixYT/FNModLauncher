@@ -100,7 +100,21 @@ namespace FNModLauncher.Mods
 
         private void openFolderButton_Click(object sender, EventArgs e)
         {
-            Process.Start($"explorer.exe {modManager.GetModsPath()}");
+            Process.Start($"explorer.exe", modManager.GetModsPath());
+        }
+
+        private void findModsButton_Click(object sender, EventArgs e)
+        {
+            string path = modManager.GetModsPath();
+
+            ModFinderWindow modFinderWindow = new ModFinderWindow(path);
+            modFinderWindow.Show();
+        }
+
+        private void refreshModsButton_Click(object sender, EventArgs e)
+        {
+            modManager.FetchMods();
+            UpdateModsBox();
         }
     }
 }

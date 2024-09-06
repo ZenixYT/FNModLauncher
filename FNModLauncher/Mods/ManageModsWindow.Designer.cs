@@ -32,6 +32,8 @@
             this.modListBox = new System.Windows.Forms.CheckedListBox();
             this.deleteModButton = new System.Windows.Forms.Button();
             this.openFolderButton = new System.Windows.Forms.Button();
+            this.findModsButton = new System.Windows.Forms.Button();
+            this.refreshModsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // modListBox
@@ -54,7 +56,7 @@
             // 
             // openFolderButton
             // 
-            this.openFolderButton.Location = new System.Drawing.Point(224, 370);
+            this.openFolderButton.Location = new System.Drawing.Point(224, 334);
             this.openFolderButton.Name = "openFolderButton";
             this.openFolderButton.Size = new System.Drawing.Size(105, 30);
             this.openFolderButton.TabIndex = 2;
@@ -62,11 +64,33 @@
             this.openFolderButton.UseVisualStyleBackColor = true;
             this.openFolderButton.Click += new System.EventHandler(this.openFolderButton_Click);
             // 
+            // findModsButton
+            // 
+            this.findModsButton.Location = new System.Drawing.Point(224, 298);
+            this.findModsButton.Name = "findModsButton";
+            this.findModsButton.Size = new System.Drawing.Size(105, 30);
+            this.findModsButton.TabIndex = 3;
+            this.findModsButton.Text = "Find Mods";
+            this.findModsButton.UseVisualStyleBackColor = true;
+            this.findModsButton.Click += new System.EventHandler(this.findModsButton_Click);
+            // 
+            // refreshModsButton
+            // 
+            this.refreshModsButton.Location = new System.Drawing.Point(224, 370);
+            this.refreshModsButton.Name = "refreshModsButton";
+            this.refreshModsButton.Size = new System.Drawing.Size(105, 30);
+            this.refreshModsButton.TabIndex = 4;
+            this.refreshModsButton.Text = "Refresh Mods List";
+            this.refreshModsButton.UseVisualStyleBackColor = true;
+            this.refreshModsButton.Click += new System.EventHandler(this.refreshModsButton_Click);
+            // 
             // ManageModsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 451);
+            this.Controls.Add(this.refreshModsButton);
+            this.Controls.Add(this.findModsButton);
             this.Controls.Add(this.openFolderButton);
             this.Controls.Add(this.deleteModButton);
             this.Controls.Add(this.modListBox);
@@ -85,5 +109,7 @@
         private System.Windows.Forms.CheckedListBox modListBox;
         private System.Windows.Forms.Button deleteModButton;
         private System.Windows.Forms.Button openFolderButton;
+        private System.Windows.Forms.Button findModsButton;
+        private System.Windows.Forms.Button refreshModsButton;
     }
 }
