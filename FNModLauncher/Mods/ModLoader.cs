@@ -78,17 +78,20 @@ namespace FNModLauncher.Mods
         public List<Mod> FetchMods()
         {
             List<Mod> mods = new List<Mod>();
-            foreach (string ModFile in Directory.GetFiles(ModsPath))
+            if (Directory.Exists(ModsPath))
             {
-                Mod newMod = new Mod();
-                newMod.ModFilePath = ModFile;
+                foreach (string ModFile in Directory.GetFiles(ModsPath))
+                {
+                    Mod newMod = new Mod();
+                    newMod.ModFilePath = ModFile;
 
-                if (ModFile.EndsWith(".dll") && !ModFile.EndsWith(".delayed.dll"))
-                    newMod.ModType = ModType.DLL_MOD;
-                else if (ModFile.EndsWith(".pak") || ModFile.EndsWith(".sig") || ModFile.EndsWith(".ucas") || ModFile.EndsWith(".utoc"))
-                    newMod.ModType = ModType.PAK_MOD;
+                    if (ModFile.EndsWith(".dll") && !ModFile.EndsWith(".delayed.dll"))
+                        newMod.ModType = ModType.DLL_MOD;
+                    else if (ModFile.EndsWith(".pak") || ModFile.EndsWith(".sig") || ModFile.EndsWith(".ucas") || ModFile.EndsWith(".utoc"))
+                        newMod.ModType = ModType.PAK_MOD;
 
-                mods.Add(newMod);
+                    mods.Add(newMod);
+                }
             }
 
             return mods;

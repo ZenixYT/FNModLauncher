@@ -28,7 +28,7 @@ namespace FNModLauncher.Mods
 
         private void ModFinderWindow_Load(object sender, EventArgs e)
         {
-            string modListURL = "https://raw.githubusercontent.com/ZenixYT/FML-Mods/main/mods.json";
+            string modListURL = Globals.jsonRoot.Settings.DefaultModsServer;
 
             using (WebClient client = new WebClient())
             {

@@ -37,6 +37,8 @@
             this.OpenModsButton = new System.Windows.Forms.Button();
             this.deleteBuildButton = new System.Windows.Forms.Button();
             this.installBuildButton = new System.Windows.Forms.Button();
+            this.openBuildFolderButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InstancesBox
@@ -91,7 +93,7 @@
             // 
             // OpenModsButton
             // 
-            this.OpenModsButton.Location = new System.Drawing.Point(309, 401);
+            this.OpenModsButton.Location = new System.Drawing.Point(309, 365);
             this.OpenModsButton.Name = "OpenModsButton";
             this.OpenModsButton.Size = new System.Drawing.Size(105, 30);
             this.OpenModsButton.TabIndex = 6;
@@ -101,7 +103,7 @@
             // 
             // deleteBuildButton
             // 
-            this.deleteBuildButton.Location = new System.Drawing.Point(309, 172);
+            this.deleteBuildButton.Location = new System.Drawing.Point(309, 208);
             this.deleteBuildButton.Name = "deleteBuildButton";
             this.deleteBuildButton.Size = new System.Drawing.Size(105, 30);
             this.deleteBuildButton.TabIndex = 7;
@@ -119,11 +121,33 @@
             this.installBuildButton.UseVisualStyleBackColor = true;
             this.installBuildButton.Click += new System.EventHandler(this.installBuildButton_Click);
             // 
+            // openBuildFolderButton
+            // 
+            this.openBuildFolderButton.Location = new System.Drawing.Point(309, 172);
+            this.openBuildFolderButton.Name = "openBuildFolderButton";
+            this.openBuildFolderButton.Size = new System.Drawing.Size(105, 30);
+            this.openBuildFolderButton.TabIndex = 9;
+            this.openBuildFolderButton.Text = "Open Build Folder";
+            this.openBuildFolderButton.UseVisualStyleBackColor = true;
+            this.openBuildFolderButton.Click += new System.EventHandler(this.openBuildFolderButton_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Location = new System.Drawing.Point(309, 401);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(105, 30);
+            this.settingsButton.TabIndex = 10;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 443);
+            this.Controls.Add(this.settingsButton);
+            this.Controls.Add(this.openBuildFolderButton);
             this.Controls.Add(this.installBuildButton);
             this.Controls.Add(this.deleteBuildButton);
             this.Controls.Add(this.OpenModsButton);
@@ -153,6 +177,8 @@
         private System.Windows.Forms.Button OpenModsButton;
         private System.Windows.Forms.Button deleteBuildButton;
         private System.Windows.Forms.Button installBuildButton;
+        private System.Windows.Forms.Button openBuildFolderButton;
+        private System.Windows.Forms.Button settingsButton;
     }
 }
 

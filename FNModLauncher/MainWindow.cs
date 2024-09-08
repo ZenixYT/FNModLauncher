@@ -50,28 +50,40 @@ namespace FNModLauncher
                 string json = File.ReadAllText(jsonPath);
                 Globals.jsonRoot = JsonConvert.DeserializeObject<Root>(json);
             }
+            else
+            {
+                Globals.jsonRoot = new Root();
+            }
 
             if (Globals.jsonRoot != null)
                 UpdateInstances();
             else
                 InstancesBox.Items.Clear();
 
-            UpdateChecker updateChecker = new UpdateChecker(this);
-            updateChecker.CheckForUpdate(); 
+            if (Globals.jsonRoot.Settings.AutoUpdate)
+            {
+                UpdateChecker updateChecker = new UpdateChecker(this);
+                updateChecker.CheckForUpdate();
+            }
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
         {
-            var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
             Instance SelectedInstance = null;
-            if (Globals.jsonRoot != null)
+
+            var SelectedInstanceBoxItemInst = InstancesBox.SelectedItem;
+            if (SelectedInstanceBoxItemInst != null)
             {
-                foreach (Instance instance in Globals.jsonRoot.Instances)
+                var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
+                if (Globals.jsonRoot != null)
                 {
-                    if (instance.Name == SelectedInstanceBoxItem)
-                    { 
-                        SelectedInstance = instance;
-                        break;
+                    foreach (Instance instance in Globals.jsonRoot.Instances)
+                    {
+                        if (instance.Name == SelectedInstanceBoxItem)
+                        {
+                            SelectedInstance = instance;
+                            break;
+                        }
                     }
                 }
             }
@@ -83,16 +95,21 @@ namespace FNModLauncher
 
         private void ModifyBuildButton_Click(object sender, EventArgs e)
         {
-            var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
             Instance SelectedInstance = null;
-            if (Globals.jsonRoot != null)
+
+            var SelectedInstanceBoxItemInst = InstancesBox.SelectedItem;
+            if (SelectedInstanceBoxItemInst != null)
             {
-                foreach (Instance instance in Globals.jsonRoot.Instances)
+                var SelectedInstanceBoxItem = InstancesBox.SelectedItem.ToString();
+                if (Globals.jsonRoot != null)
                 {
-                    if (instance.Name == SelectedInstanceBoxItem)
+                    foreach (Instance instance in Globals.jsonRoot.Instances)
                     {
-                        SelectedInstance = instance;
-                        break;
+                        if (instance.Name == SelectedInstanceBoxItem)
+                        {
+                            SelectedInstance = instance;
+                            break;
+                        }
                     }
                 }
             }
@@ -173,6 +190,41 @@ namespace FNModLauncher
         {
             Builds.InstallBuildsWindow installBuildsWindow = new Builds.InstallBuildsWindow();
             installBuildsWindow.Show();
+        }
+
+        private void openBuildFolderButton_Click(object sender, EventArgs e)
+        {
+            var SelectedInstanceBoxItem = InstancesBox.SelectedItem;
+            Instance SelectedInstance = null;
+            if (SelectedInstanceBoxItem != null)
+            {
+                var SelectedInstanceBoxItemStr = SelectedInstanceBoxItem.ToString();
+                if (Globals.jsonRoot != null)
+                {
+                    foreach (Instance instance in Globals.jsonRoot.Instances)
+                    {
+                        if (instance.Name == SelectedInstanceBoxItemStr)
+                        {
+                            SelectedInstance = instance;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (SelectedInstance != null)
+            {
+                if (SelectedInstance.BuildPath != null)
+                {
+                    Process.Start("explorer.exe", SelectedInstance.BuildPath);
+                }
+            }
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
         }
     }
 }

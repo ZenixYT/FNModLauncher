@@ -10,6 +10,18 @@ namespace FNModLauncher.Utilities
 {
     namespace Json
     {
+        public class LauncherSettings
+        {
+            public string DefaultModsServer { get; set; }
+            public bool AutoUpdate { get; set; }
+
+            public LauncherSettings()
+            {
+                this.DefaultModsServer = "https://raw.githubusercontent.com/ZenixYT/FML-Mods/main/mods.json";
+                this.AutoUpdate = true;
+            }
+        }
+
         public class Instance
         {
             public string Name { get; set; }
@@ -21,10 +33,12 @@ namespace FNModLauncher.Utilities
         public class Root
         {
             public List<Instance> Instances { get; set; }
+            public LauncherSettings Settings { get; set; }
 
             public Root()
             {
                 this.Instances = new List<Instance>();
+                this.Settings = new LauncherSettings();
             }
 
             public void SaveRoot()
